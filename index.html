@@ -3,270 +3,816 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TST FIRE | Proteção Contra Incêndio</title>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <title>TST FIRE | Alexandre Lins - Serviços de Bombeiro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: linear-gradient(135deg, #f8fafc 60%, #e43a34 100%);
-      color: #222;
+    :root {
+      --red-primary: #e43a34;
+      --red-hover: #c52d27;
+      --green-primary: #158e2c;
+      --green-hover: #0d7021;
+      --white: #ffffff;
+      --light-bg: #f8f9fa;
+      --dark-text: #343a40;
+      --gray-text: #6c757d;
+      --shadow: 0 5px 15px rgba(0,0,0,0.1);
+      --shadow-hover: 0 8px 25px rgba(0,0,0,0.15);
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
     }
-    header {
-      background: #e43a34;
+    
+    * {
+      margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark-text);
+      background: var(--light-bg);
+      line-height: 1.6;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* HEADER */
+    .header {
+      background: linear-gradient(to bottom, var(--red-primary), #c52d27);
+      color: var(--white);
+      padding: 20px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background: var(--green-primary);
+    }
+    
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
       position: relative;
+      z-index: 1;
     }
-    .logo-main {
-      width: 230px;
-      margin-top: 30px;
-      margin-bottom: 0;
-      border-radius: 50%;
-      border: 8px solid #fff;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
-      background: #fff;
-    }
-    .title {
-      color: #fff;
-      font-size: 2.8rem;
-      font-weight: 700;
-      margin: 10px 0 6px 0;
-      text-shadow: 2px 2px 18px #2227;
-    }
-    .subtitle {
-      color: #fff;
-      font-size: 1.3rem;
-      font-weight: 400;
-      margin-bottom: 14px;
-      text-shadow: 2px 2px 10px #2225;
-    }
-    nav {
-      background: #fff;
-      box-shadow: 0 2px 8px #2221;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      font-size: 1.05rem;
-      font-weight: 500;
-      padding: 12px 0;
-    }
-    nav a {
-      color: #e43a34;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    nav a:hover {
-      color: #158e2c;
-      text-decoration: underline;
-    }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 18px 30px 18px;
-    }
-    .section {
-      margin-bottom: 38px;
-    }
-    .section-title {
-      color: #e43a34;
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      text-shadow: 1px 1px 8px #2222;
-    }
-    .services-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 28px;
-      margin-bottom: 22px;
-    }
-    .service-card {
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 2px 14px #2222;
-      flex: 1 1 260px;
-      min-width: 240px;
-      padding: 24px 20px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border-left: 7px solid #158e2c;
-    }
-    .service-card:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 8px 28px #e43a3433;
-      border-left: 7px solid #e43a34;
-    }
-    .service-title {
-      font-size: 1.25rem;
-      color: #158e2c;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .service-desc {
-      font-size: 1rem;
-      color: #444;
-    }
-    .callout {
+    
+    .logo-container {
       display: flex;
       align-items: center;
-      background: #158e2c;
-      color: #fff;
-      border-radius: 16px;
-      padding: 24px 18px 24px 18px;
-      box-shadow: 0 2px 14px #2223;
-      margin-bottom: 26px;
-      gap: 26px;
-      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 15px;
     }
-    .callout img {
-      width: 110px;
+    
+    .logo {
+      width: 300px;
+      height: 263px;
       border-radius: 50%;
-      border: 4px solid #fff;
-      background: #fff;
-      box-shadow: 0 6px 18px #2222;
+      border: 5px solid var(--white);
+      box-shadow: var(--shadow);
+      background: var(--white);
+      padding: 5px;
+      transition: var(--transition);
     }
-    .callout-text {
-      font-size: 1.25rem;
-      font-weight: 500;
-      flex: 1;
+    
+    .logo:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-hover);
     }
-    .cta-btn {
-      background: #e43a34;
-      color: #fff;
+    
+    .site-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 10px 0 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .site-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    
+    .professional-info {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--green-primary);
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 50px;
+      display: inline-block;
+      margin: 10px 0 20px;
+      box-shadow: var(--shadow);
+      font-size: 1.1rem;
+    }
+    
+    /* NAVBAR */
+    .navbar {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    
+    .nav-link {
+      color: var(--red-primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      position: relative;
+      padding: 5px 0;
+      transition: var(--transition);
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--green-primary);
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover {
+      color: var(--green-primary);
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(135deg, rgba(21,142,44,0.9), rgba(21,142,44,0.7)), 
+                  url('https://images.unsplash.com/photo-1582656718149-eca8c5506d8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80') center/cover;
+      padding: 60px 0;
+      color: var(--white);
+      text-align: center;
+      margin-bottom: 50px;
+      box-shadow: var(--shadow);
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .hero-text {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: var(--red-primary);
+      color: var(--white);
+      padding: 15px 40px;
+      border-radius: 50px;
+      text-decoration: none;
       font-weight: 700;
       font-size: 1.2rem;
-      padding: 13px 34px;
+      transition: var(--transition);
       border: none;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px #e43a3431;
       cursor: pointer;
-      margin-top: 16px;
-      transition: background 0.2s;
+      box-shadow: var(--shadow);
     }
-    .cta-btn:hover {
-      background: #158e2c;
+    
+    .cta-button:hover {
+      background: var(--red-hover);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
     }
-    .contact-info {
+    
+    /* EXPERT SECTION */
+    .expert-section {
+      background: var(--white);
+      padding: 50px 0;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 50px;
+    }
+    
+    .section-title {
+      font-size: 2.2rem;
+      color: var(--red-primary);
       text-align: center;
-      margin-top: 30px;
-      font-size: 1.1rem;
-      color: #222;
+      margin-bottom: 40px;
+      position: relative;
+      padding-bottom: 15px;
     }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 5px;
+      background: var(--green-primary);
+      border-radius: 10px;
+    }
+    
+    .expert-container {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .expert-image {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .expert-img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--green-primary);
+      box-shadow: var(--shadow);
+    }
+    
+    .expert-content {
+      flex: 2;
+    }
+    
+    .expert-name {
+      font-size: 1.8rem;
+      color: var(--red-primary);
+      margin-bottom: 10px;
+    }
+    
+    .expert-title {
+      font-size: 1.2rem;
+      color: var(--green-primary);
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .badge {
+      background: var(--red-primary);
+      color: var(--white);
+      font-size: 0.85rem;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    
+    .expert-description {
+      color: var(--gray-text);
+      line-height: 1.7;
+    }
+    
+    /* SERVICES SECTION */
+    .services {
+      padding: 50px 0;
+      margin-bottom: 50px;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .service-card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--red-primary);
+    }
+    
+    .service-icon {
+      background: var(--red-primary);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: -35px auto 20px;
+      color: var(--white);
+      font-size: 1.8rem;
+      box-shadow: var(--shadow);
+      border: 5px solid var(--white);
+    }
+    
+    .service-content {
+      padding: 20px 25px 30px;
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .service-title {
+      font-size: 1.5rem;
+      color: var(--red-primary);
+      margin-bottom: 15px;
+    }
+    
+    .service-description {
+      color: var(--gray-text);
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    
+    .service-link {
+      align-self: center;
+      margin-top: auto;
+      background: var(--green-primary);
+      color: var(--white);
+      padding: 8px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    
+    .service-link:hover {
+      background: var(--green-hover);
+    }
+    
+    /* TRAINING SECTION */
+    .training {
+      background: linear-gradient(135deg, rgba(228,58,52,0.9), rgba(228,58,52,0.8)), 
+                  url('https://images.unsplash.com/photo-1580893246395-52aead8960dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80') center/cover;
+      padding: 60px 0;
+      color: var(--white);
+      border-radius: var(--border-radius);
+      margin-bottom: 50px;
+    }
+    
+    .training-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.2rem;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .training-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 5px;
+      background: var(--white);
+      border-radius: 10px;
+    }
+    
+    .training-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    
+    .training-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--border-radius);
+      padding: 30px 25px;
+      color: var(--dark-text);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+    }
+    
+    .training-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .training-card-title {
+      color: var(--red-primary);
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .training-card-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: var(--green-primary);
+      border-radius: 10px;
+    }
+    
+    .training-description {
+      color: var(--gray-text);
+    }
+    
+    /* CONTACT SECTION */
+    .contact {
+      padding: 50px 0;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 50px;
+    }
+    
+    .contact-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .contact-method {
+      background: var(--light-bg);
+      padding: 25px 20px;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+    }
+    
+    .contact-method:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+    
+    .contact-icon {
+      font-size: 2rem;
+      color: var(--red-primary);
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+    
+    .contact-title {
+      color: var(--green-primary);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .contact-info {
+      color: var(--gray-text);
+    }
+    
+    .contact-info a {
+      color: var(--red-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    
+    .contact-info a:hover {
+      color: var(--green-primary);
+    }
+    
     .phone {
       font-size: 1.3rem;
-      color: #158e2c;
-      font-weight: 700;
-      margin-bottom: 8px;
+      color: var(--green-primary);
+      font-weight: 600;
       display: block;
+      margin-top: 10px;
     }
-    footer {
-      background: #222;
-      color: #fff;
+    
+    /* FOOTER */
+    .footer {
+      background: var(--dark-text);
+      color: var(--white);
       text-align: center;
-      padding: 22px 0 18px 0;
-      font-size: 1rem;
+      padding: 30px 0;
+      border-top: 5px solid var(--green-primary);
     }
-    @media (max-width: 700px) {
-      nav { flex-direction: column; gap: 10px; }
-      .services-list { flex-direction: column; gap: 18px; }
-      .container { padding: 24px 8px 18px 8px;}
-      .section-title { font-size: 1.4rem;}
-      .callout { flex-direction: column; align-items: flex-start; }
+    
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 992px) {
+      .expert-container {
+        flex-direction: column;
+      }
+      
+      .expert-image {
+        margin-bottom: 20px;
+      }
+      
+      .expert-content {
+        text-align: center;
+      }
+      
+      .expert-title {
+        justify-content: center;
+      }
+      
+      .site-title {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+      }
+      
+      .service-icon {
+        margin-top: 15px;
+      }
+      
+      .site-title {
+        font-size: 2.2rem;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .professional-info {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+      }
+      
+      .site-title {
+        font-size: 1.8rem;
+      }
+      
+      .site-subtitle {
+        font-size: 1rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .expert-name {
+        font-size: 1.5rem;
+      }
+      
+      .expert-img {
+        width: 180px;
+        height: 180px;
+      }
+    }
+    
+    /* ANIMATIONS */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .animate-pulse {
+      animation: pulse 2s infinite;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="image1" alt="Logo TST FIRE" class="logo-main">
-    <div class="title">TST FIRE</div>
-    <div class="subtitle">Especialistas em proteção contra incêndio</div>
-    <nav>
-      <a href="#servicos">Serviços</a>
-      <a href="#cursos">Cursos & Treinamentos</a>
-      <a href="#consultoria">Consultoria</a>
-      <a href="#contato">Contato</a>
-    </nav>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo-container">
+        <img src="logo.JPEG" alt="TST FIRE Logo" class="logo">
+      </div>
+      <h1 class="site-title">TST FIRE</h1>
+      <p class="site-subtitle">Especialistas em proteção contra incêndio</p>
+      <div class="professional-info">Alexandre Lins | Bombeiro • Téc. de Segurança • Representante comercial</div>
+    </div>
   </header>
-  <main class="container">
-    <section class="section callout">
-      <img src="image2" alt="Sistemas de Proteção TST FIRE">
-      <div class="callout-text">
-        <b>Proteja seu patrimônio e sua vida!</b><br>
-        Instalação de sistemas de incêndio, projetos AVCB & CLCB, recarga de extintores, treinamentos e muito mais.<br>
-        Soluções completas de proteção contra incêndio.<br>
-        <span class="phone">(15) 99699-9460</span>
-        <a href="https://wa.me/5515996999460" target="_blank">
-          <button class="cta-btn">Fale Conosco no WhatsApp</button>
-        </a>
-      </div>
-    </section>
+  
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#sobre" class="nav-link">Sobre</a>
+      <a href="#servicos" class="nav-link">Serviços</a>
+      <a href="#treinamentos" class="nav-link">Treinamentos</a>
+      <a href="#contato" class="nav-link">Contato</a>
+    </div>
+  </nav>
+  
+  <!-- HERO SECTION -->
+ <section class="hero">
+  <div class="container hero-content">
+    <h2 class="hero-title">Proteção Completa Contra Incêndio</h2>
+    <p class="hero-text">
+      Oferecemos soluções completas em segurança contra incêndio, incluindo equipamentos de alta qualidade e treinamentos especializados em primeiros socorros, combate a incêndios e evacuação. Conte com profissionais experientes para proteger seu patrimônio e garantir a segurança de todos.
+    </p>
+    <a href="https://wa.me/5515996999460" class="cta-button animate-pulse">Solicite um orçamento</a>
+  </div>
+</section>
 
-    <section class="section" id="servicos">
-      <div class="section-title">Nossos Serviços</div>
-      <div class="services-list">
-        <div class="service-card">
-          <div class="service-title">Instalação de Sistemas de Incêndio</div>
-          <div class="service-desc">Projetos, instalação e manutenção de sistemas de alarme, sprinklers, hidrantes e detectores.</div>
+  
+  <!-- EXPERT SECTION -->
+  <section class="expert-section" id="sobre">
+    <div class="container">
+      <h2 class="section-title">Profissional Especializado</h2>
+      <div class="expert-container">
+        <div class="expert-image">
+          <img src="Alexandre.JPG" alt="Alexandre Lins" class="expert-img">
         </div>
-        <div class="service-card">
-          <div class="service-title">Extintores & Recarga</div>
-          <div class="service-desc">Venda, recarga, manutenção de extintores e acessórios certificados.</div>
-        </div>
-        <div class="service-card">
-          <div class="service-title">Projetos AVCB & CLCB</div>
-          <div class="service-desc">Elaboração e regularização de projetos para obtenção de AVCB e CLCB junto ao Corpo de Bombeiros.</div>
-        </div>
-        <div class="service-card">
-          <div class="service-title">Consultoria Especializada</div>
-          <div class="service-desc">Orientação técnica e legal para empresas, condomínios e indústrias.</div>
-        </div>
-        <div class="service-card">
-          <div class="service-title">Acessórios Contra Incêndio</div>
-          <div class="service-desc">Mangueiras, placas, suportes, alarmes, iluminação de emergência e sinalização.</div>
-        </div>
-      </div>
-    </section>
+        <div class="expert-content">
+          <h3 class="expert-name">Alexandre Lins</h3>
+          <div class="expert-title">
+            <span class="badge">Bombeiro</span>
+            <span class="badge">Téc. de Segurança</span>
+            <span class="badge">Representante Comercial</span>
+          </div>
+         <p class="expert-description">
+Com ampla experiência na área de segurança contra incêndios, nossa empresa oferece soluções completas e personalizadas para cada cliente. Atuamos com projetos, instalação e manutenção de sistemas de prevenção, além de treinamentos de primeiros socorros, combate a incêndios, uso correto de extintores e procedimentos de evacuação. Garantimos serviços eficientes e em conformidade com as normas vigentes, proporcionando segurança e tranquilidade para empresas, indústrias e residências.
+</p>
 
-    <section class="section" id="cursos">
-      <div class="section-title">Cursos & Treinamentos</div>
-      <div class="services-list">
-        <div class="service-card">
-          <div class="service-title">Brigada de Incêndio</div>
-          <div class="service-desc">Formação completa conforme legislação, com certificado reconhecido.</div>
-        </div>
-        <div class="service-card">
-          <div class="service-title">Treinamento de Extintores</div>
-          <div class="service-desc">Uso correto de extintores e equipamentos de combate a incêndio.</div>
-        </div>
-        <div class="service-card">
-          <div class="service-title">Simulados & Primeiros Socorros</div>
-          <div class="service-desc">Treinamento prático para emergências e evacuação segura.</div>
-        </div>
-        <div class="service-card">
-          <div class="service-title">Cursos Personalizados</div>
-          <div class="service-desc">Conteúdos adaptados para empresas, condomínios e escolas.</div>
         </div>
       </div>
-    </section>
-
-    <section class="section" id="consultoria">
-      <div class="section-title">Consultoria Especializada</div>
-      <div class="service-desc">
-        Conte com especialistas para garantir conformidade legal, segurança máxima e tranquilidade. Projetos, adequações, treinamentos e acompanhamento em todas as etapas.
+    </div>
+  </section>
+  
+  <!-- SERVICES SECTION -->
+  <section class="services" id="servicos">
+    <div class="container">
+      <h2 class="section-title">Nossos Serviços</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🔥</div>
+          <div class="service-content">
+            <h3 class="service-title">Equipamentos Contra Incêndio</h3>
+            <p class="service-description">Fornecimento e instalação de equipamentos certificados para proteção contra incêndio, garantindo máxima segurança e conformidade com normas técnicas.</p>
+            <a href="#contato" class="service-link">Saiba mais</a>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">🧯</div>
+          <div class="service-content">
+            <h3 class="service-title">Extintores & Recarga</h3>
+            <p class="service-description">Venda, recarga e manutenção de extintores de todos os tipos e acessórios certificados, mantendo seus equipamentos sempre em perfeitas condições.</p>
+            <a href="#contato" class="service-link">Saiba mais</a>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">📋</div>
+          <div class="service-content">
+            <h3 class="service-title">Projetos AVCB & CLCB</h3>
+            <p class="service-description">Elaboração e regularização de projetos para obtenção de Auto de Vistoria do Corpo de Bombeiros (AVCB) e Certificado de Licença do Corpo de Bombeiros (CLCB).</p>
+            <a href="#contato" class="service-link">Saiba mais</a>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">👨‍💼</div>
+          <div class="service-content">
+            <h3 class="service-title">Consultoria Especializada</h3>
+            <p class="service-description">Orientação técnica e legal para empresas, condomínios e indústrias, garantindo conformidade com as normas de segurança contra incêndio.</p>
+            <a href="#contato" class="service-link">Saiba mais</a>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">🚨</div>
+          <div class="service-content">
+            <h3 class="service-title">Acessórios Contra Incêndio</h3>
+            <p class="service-description">Fornecimento de mangueiras, placas, suportes, alarmes, iluminação de emergência e toda sinalização necessária para segurança completa.</p>
+            <a href="#contato" class="service-link">Saiba mais</a>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <div class="service-content">
+            <h3 class="service-title">Manutenção Preventiva</h3>
+            <p class="service-description">Serviços de inspeção e manutenção regular para garantir o funcionamento adequado de todos os equipamentos de segurança.</p>
+            <a href="#contato" class="service-link">Saiba mais</a>
+          </div>
+        </div>
       </div>
-    </section>
-
-    <section class="section contact-info" id="contato">
-      <div class="section-title">Contato</div>
-      <span class="phone">(15) 99699-9460</span>
-      <div>Email: <a href="mailto:tstfire@exemplo.com" style="color:#e43a34;">tstfire@exemplo.com</a></div>
-      <div>WhatsApp: <a href="https://wa.me/5515996999460" target="_blank" style="color:#158e2c;">Clique aqui</a></div>
-      <div>Endereço: Sorocaba / SP e região</div>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2025 TST FIRE - Proteção contra incêndio | Todos os direitos reservados.
+    </div>
+  </section>
+  
+  <!-- TRAINING SECTION -->
+  <section class="training" id="treinamentos">
+    <div class="container">
+      <h2 class="training-title">Cursos & Treinamentos</h2>
+      <div class="training-grid">
+        <div class="training-card">
+          <h3 class="training-card-title">Brigada de Incêndio</h3>
+          <p class="training-description">Formação completa conforme legislação, com certificado reconhecido e instrutor especializado para capacitar sua equipe.</p>
+        </div>
+        
+        <div class="training-card">
+          <h3 class="training-card-title">Uso de Extintores</h3>
+          <p class="training-description">Treinamento teórico e prático para uso correto de extintores e equipamentos de combate a incêndio em situações de emergência.</p>
+        </div>
+        
+        <div class="training-card">
+          <h3 class="training-card-title">Primeiros Socorros</h3>
+          <p class="training-description">Aprenda técnicas essenciais de primeiros socorros para situações de emergência, podendo salvar vidas enquanto o socorro especializado não chega.</p>
+        </div>
+        
+        <div class="training-card">
+          <h3 class="training-card-title">Simulados de Evacuação</h3>
+          <p class="training-description">Treinamento prático para evacuação segura de edificações em casos de emergência, com criação de rotas de fuga e protocolos de segurança.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CONTACT SECTION -->
+  <section class="contact" id="contato">
+    <div class="container contact-container">
+      <h2 class="section-title">Entre em Contato</h2>
+      <div class="contact-methods">
+        <div class="contact-method">
+          <span class="contact-icon">📱</span>
+          <h3 class="contact-title">Telefone & WhatsApp</h3>
+          <div class="contact-info">
+            <span class="phone">(15) 99699-9460</span>
+            <a href="https://wa.me/5515996999460" target="_blank">Fale pelo WhatsApp</a>
+          </div>
+        </div>
+        
+        <div class="contact-method">
+          <span class="contact-icon">✉️</span>
+          <h3 class="contact-title">E-mail</h3>
+          <div class="contact-info">
+            <a href="mailto:tstfire@exemplo.com">tstfire@exemplo.com</a>
+          </div>
+        </div>
+        
+        <div class="contact-method">
+          <span class="contact-icon">📍</span>
+          <h3 class="contact-title">Área de Atendimento</h3>
+          <div class="contact-info">
+            Sorocaba/SP e região<br>
+            Atendimento em todo o estado
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 TST FIRE - Proteção contra incêndio | Alexandre Lins | Todos os direitos reservados.</p>
+    </div>
   </footer>
 </body>
 </html>
