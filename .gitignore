@@ -1,0 +1,14 @@
+# Screenshots and documentation (but keep the actual site images)
+screenshots/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.log

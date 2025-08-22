@@ -77,14 +77,17 @@
     }
     
     .logo {
-      width: 300px;
-      height: 263px;
+      width: min(300px, 80vw);
+      height: auto;
+      max-height: 263px;
+      aspect-ratio: 1;
       border-radius: 50%;
       border: 5px solid var(--white);
       box-shadow: var(--shadow);
       background: var(--white);
       padding: 5px;
       transition: var(--transition);
+      object-fit: cover;
     }
     
     .logo:hover {
@@ -93,14 +96,14 @@
     }
     
     .site-title {
-      font-size: 3rem;
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 700;
       margin: 10px 0 0;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
     
     .site-subtitle {
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
       margin-bottom: 10px;
     }
     
@@ -113,7 +116,9 @@
       display: inline-block;
       margin: 10px 0 20px;
       box-shadow: var(--shadow);
-      font-size: 1.1rem;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      max-width: 90%;
+      text-align: center;
     }
     
     /* NAVBAR */
@@ -136,10 +141,16 @@
       color: var(--red-primary);
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: clamp(1rem, 2vw, 1.1rem);
       position: relative;
-      padding: 5px 0;
+      padding: 10px 5px;
       transition: var(--transition);
+      border-radius: 4px;
+    }
+    
+    .nav-link:focus {
+      outline: 2px solid var(--green-primary);
+      outline-offset: 2px;
     }
     
     .nav-link::after {
@@ -164,7 +175,10 @@
     /* HERO SECTION */
     .hero {
       background: linear-gradient(135deg, rgba(21,142,44,0.9), rgba(21,142,44,0.7)), 
-                  url('https://images.unsplash.com/photo-1582656718149-eca8c5506d8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80') center/cover;
+                  var(--green-primary);
+      /* Fallback color if external image fails */
+      background-image: linear-gradient(135deg, rgba(21,142,44,0.9), rgba(21,142,44,0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23158e2c"/></svg>');
       padding: 60px 0;
       color: var(--white);
       text-align: center;
@@ -179,7 +193,7 @@
     }
     
     .hero-title {
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
       margin-bottom: 20px;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
@@ -198,7 +212,7 @@
       border-radius: 50px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
       transition: var(--transition);
       border: none;
       cursor: pointer;
@@ -211,6 +225,11 @@
       box-shadow: var(--shadow-hover);
     }
     
+    .cta-button:focus {
+      outline: 3px solid var(--white);
+      outline-offset: 3px;
+    }
+    
     /* EXPERT SECTION */
     .expert-section {
       background: var(--white);
@@ -221,7 +240,7 @@
     }
     
     .section-title {
-      font-size: 2.2rem;
+      font-size: clamp(1.8rem, 4vw, 2.2rem);
       color: var(--red-primary);
       text-align: center;
       margin-bottom: 40px;
@@ -306,7 +325,7 @@
     
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
       gap: 30px;
     }
     
@@ -388,10 +407,18 @@
       background: var(--green-hover);
     }
     
+    .service-link:focus {
+      outline: 2px solid var(--red-primary);
+      outline-offset: 2px;
+    }
+    
     /* TRAINING SECTION */
     .training {
       background: linear-gradient(135deg, rgba(228,58,52,0.9), rgba(228,58,52,0.8)), 
-                  url('https://images.unsplash.com/photo-1580893246395-52aead8960dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80') center/cover;
+                  var(--red-primary);
+      /* Fallback color if external image fails */
+      background-image: linear-gradient(135deg, rgba(228,58,52,0.9), rgba(228,58,52,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23e43a34"/></svg>');
       padding: 60px 0;
       color: var(--white);
       border-radius: var(--border-radius);
@@ -420,7 +447,7 @@
     
     .training-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
       gap: 30px;
     }
     
@@ -480,7 +507,7 @@
     
     .contact-methods {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
       gap: 30px;
       margin-top: 40px;
     }
@@ -525,6 +552,12 @@
       color: var(--green-primary);
     }
     
+    .contact-info a:focus {
+      outline: 2px solid var(--green-primary);
+      outline-offset: 2px;
+      border-radius: 3px;
+    }
+    
     .phone {
       font-size: 1.3rem;
       color: var(--green-primary);
@@ -560,15 +593,15 @@
         justify-content: center;
       }
       
-      .site-title {
-        font-size: 2.5rem;
+      .container {
+        padding: 0 15px;
       }
     }
     
     @media (max-width: 768px) {
       .nav-container {
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
         align-items: center;
       }
       
@@ -576,12 +609,22 @@
         margin-top: 15px;
       }
       
-      .site-title {
-        font-size: 2.2rem;
+      .hero {
+        padding: 40px 0;
       }
       
-      .hero-title {
-        font-size: 2rem;
+      .services, .expert-section, .contact {
+        padding: 40px 0;
+      }
+      
+      .training {
+        padding: 40px 0;
+      }
+      
+      .services-grid,
+      .training-grid,
+      .contact-methods {
+        gap: 20px;
       }
     }
     
@@ -589,27 +632,33 @@
       .professional-info {
         font-size: 0.9rem;
         padding: 8px 15px;
-      }
-      
-      .site-title {
-        font-size: 1.8rem;
-      }
-      
-      .site-subtitle {
-        font-size: 1rem;
-      }
-      
-      .section-title {
-        font-size: 1.8rem;
+        margin: 10px 10px 20px;
       }
       
       .expert-name {
-        font-size: 1.5rem;
+        font-size: clamp(1.3rem, 4vw, 1.5rem);
       }
       
       .expert-img {
-        width: 180px;
-        height: 180px;
+        width: clamp(150px, 40vw, 180px);
+        height: clamp(150px, 40vw, 180px);
+      }
+      
+      .service-content,
+      .training-card {
+        padding: 20px 15px;
+      }
+      
+      .contact-method {
+        padding: 20px 15px;
+      }
+      
+      .nav-container {
+        gap: 5px;
+      }
+      
+      .nav-link {
+        padding: 8px 12px;
       }
     }
     
@@ -630,7 +679,7 @@
   <header class="header">
     <div class="container header-content">
       <div class="logo-container">
-        <img src="logo.JPEG" alt="TST FIRE Logo" class="logo">
+        <img src="logo.jpeg" alt="TST FIRE Logo" class="logo">
       </div>
       <h1 class="site-title">TST FIRE</h1>
       <p class="site-subtitle">Especialistas em proteção contra incêndio</p>
@@ -666,7 +715,7 @@
       <h2 class="section-title">Profissional Especializado</h2>
       <div class="expert-container">
         <div class="expert-image">
-          <img src="Alexandre.JPG" alt="Alexandre Lins" class="expert-img">
+          <img src="Alexandre.jpg" alt="Alexandre Lins" class="expert-img">
         </div>
         <div class="expert-content">
           <h3 class="expert-name">Alexandre Lins</h3>
